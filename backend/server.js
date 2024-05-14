@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import { connectDB }  from "./config/db.js"
 import productRouter from "./routes/productRoute.js"
+import userRouter from "./routes/userRoute.js"
+import 'dotenv/config'
 
 const port = 5000
      
@@ -16,7 +18,7 @@ app.use(cors())
 // api endpoint
 app.use('/api/producto',productRouter)
 app.use("/images", express.static('uploads')) 
-// app.use('/api/users', router)
+app.use('/api/users', userRouter)
 
 
 
