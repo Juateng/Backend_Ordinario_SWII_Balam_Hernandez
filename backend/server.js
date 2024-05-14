@@ -1,29 +1,24 @@
 import express from "express" 
 import cors from "cors"
-// const colors = require('colors')
 import { connectDB }  from "./config/db.js"
-import router from "./route/productosRoutes.js";
-import errorHandler from "./middleware/errorMiddleware.js";
-// const dotenv = require('dotenv').config()
+import productRouter from "./routes/productRoute.js"
 
-connectDB();
-
-const port = process.env.PORT || 5000
+const port = 5000
      
 const app = express()
 
+connectDB();
+
 //middleware
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(cors())
 
 // api endpoint
-app.use('/api/producto',router)
+app.use('/api/producto',productRouter)
 app.use("/images", express.static('uploads')) 
-app.use('/api/users', router)
+// app.use('/api/users', router)
 
 
-app.use(cors())
-app.use(errorHandler)
 
 app.get("/",(req,res)=>{
     res.send("API working")

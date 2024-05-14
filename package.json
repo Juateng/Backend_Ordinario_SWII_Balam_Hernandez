@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon server.js"
   },
   "author": "Israel Hernandez and Juan Balam",
   "license": "MIT",
