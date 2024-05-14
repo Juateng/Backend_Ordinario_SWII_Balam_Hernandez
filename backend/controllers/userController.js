@@ -25,12 +25,12 @@ const loginUser = async (req,res)=>{
 
     } catch (error) {
         console.log(error)
-        res.json({success:false, message: "Error"})
+        res.json({success:false, message: "error raro"})
     }
 }
 
 const crearToken = (id)=>{
-    return jwt.sign({id},process.env.JWT_SECRET)
+    return jwt.sign({id},"abc123")
 }
 
 //register
