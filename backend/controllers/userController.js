@@ -22,6 +22,7 @@ const loginUser = async (req,res)=>{
 
         const token = crearToken(user._id);
         res.json({success:true, token})
+
     } catch (error) {
         console.log(error)
         res.json({success:false, message: "Error"})
@@ -38,7 +39,7 @@ const registerUser = async (req,res)=>{
     try {
         const exists = await userModel.findOne({email});
         if (exists){
-            return res.json({success:false, message: "El usuario ya existe"})
+            return res.json({success:false,message: "El usuario ya existe"})
         }
         //validar correo y contraseña
         if(!validator.isEmail(email)){
@@ -55,8 +56,7 @@ const registerUser = async (req,res)=>{
         const newUser = new userModel({
             name: name,
             email:email,
-            password: hashedPassword,
-
+            password: hashedPassword
         })
 
         const user = await newUser.save()
